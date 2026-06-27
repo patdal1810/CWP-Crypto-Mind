@@ -1,0 +1,6 @@
+venv/
+.env
+__pycache__/
+*.pyc
+crypto_copilot.db
+.DS_Store
