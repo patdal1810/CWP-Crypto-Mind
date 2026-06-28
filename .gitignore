@@ -1,6 +1,26 @@
-venv/
-.env
+# Python
 __pycache__/
 *.pyc
-crypto_copilot.db
+venv/
+.venv/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# OS files
 .DS_Store
+
+# IDE
+.vscode/
+.idea/

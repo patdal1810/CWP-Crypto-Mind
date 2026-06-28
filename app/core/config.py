@@ -1,18 +1,26 @@
-import os
-from dotenv import load_dotenv
+from pydantic import SecretStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-load_dotenv()
 
-class Settings:
-    DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///crypto_copilot.db")
+class Settings(BaseSettings):
+    DATABASE_URL: str
 
-    SYMBOLS = ["BTC/USDT", "ETH/USDT", "SOL/USDT"]
+    TELEGRAM_BOT_TOKEN: SecretStr
+    TELEGRAM_CHAT_ID: str
 
-    DEFAULT_TIMEFRAME = "1h"
-    DEFAULT_LIMIT = 250
+    SYMBOLS: list[str] = [
+        "BTC/USDT",
+        "ETH/USDT",
+        "SOL/USDT",
+    ]
 
-    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+    DEFAULT_TIMEFRAME: str = "1h"
+    DEFAULT_LIMIT: int = 250
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore",
+    )
 
 
 settings = Settings()

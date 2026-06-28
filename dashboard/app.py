@@ -7,8 +7,8 @@ sys.path.append(str(ROOT))
 import streamlit as st
 import plotly.graph_objects as go
 
-from data.market_data import fetch_ohlcv
-from strategies.rsi_ema_strategy import add_indicators, generate_signal
+from app.market.provider import fetch_ohlcv
+from app.signals.strategy import add_indicators, generate_signal
 
 st.set_page_config(page_title="CWP Crypto Mind", layout="wide")
 
